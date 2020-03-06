@@ -12,5 +12,5 @@ public interface ProductService {
 
     Product saveOrUpdateProduct(Product product);
 
-    List<Product> removeProductById(Integer id);
+    void removeProductById(Integer id);
 }

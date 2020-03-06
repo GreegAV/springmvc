@@ -29,12 +29,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> removeProductById(Integer id) {
-        if (products.size() == 1) {
-            throw new RuntimeException("You can't delete last item!");
-        }
+    public void removeProductById(Integer id) {
         products.remove(id);
-        return new ArrayList<>(products.values());
     }
 
     @Override
