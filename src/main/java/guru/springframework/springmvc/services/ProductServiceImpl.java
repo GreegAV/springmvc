@@ -3,10 +3,7 @@ import guru.springframework.springmvc.domain.Product;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by jt on 11/6/15.
@@ -28,6 +25,24 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(Integer id) {
         return products.get(id);
+    }
+
+    @Override
+    public Product saveOrUpdateProduct(Product product) {
+        if (product != null){
+            if (product.getId() == null){
+                product.setId(getNextKey());
+            }
+            products.put(product.getId(), product);
+
+            return product;
+        } else {
+            throw new RuntimeException("Product Can't be nill");
+        }
+    }
+
+    private Integer getNextKey(){
+        return Collections.max(products.keySet()) + 1;
     }
 
     private void loadProducts(){
@@ -67,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
 
         Product product5 = new Product();
         product5.setId(5);
-        product5.setDescription("Product 2");
+        product5.setDescription("Product 5");
         product5.setPrice(new BigDecimal("25.99"));
         product5.setImageUrl("http://example.com/product5");
 
