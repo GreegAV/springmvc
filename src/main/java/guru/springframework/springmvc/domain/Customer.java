@@ -1,21 +1,27 @@
 package guru.springframework.springmvc.domain;
 
-public class Customer {
+/**
+ * Created by jt on 11/14/15.
+ */
+public class Customer implements DomainObject {
+
     private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
-    private String address1;
-    private String address2;
+    private String addressLine1;
+    private String addressLine2;
     private String city;
     private String state;
     private String zipCode;
 
+    @Override
     public Integer getId() {
         return id;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -52,20 +58,20 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress1() {
-        return address1;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
     }
 
-    public String getAddress2() {
-        return address2;
+    public String getAddressLine2() {
+        return addressLine2;
     }
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
 
     public String getCity() {
