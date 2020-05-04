@@ -19,9 +19,19 @@ public class IndexControllerTest {
     }
 
     @Test
-    public void testIndex() throws Exception {
+    public void test() {
+
+    }
+
+    @Test
+    public void testIndexPageName() throws Exception {
         mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
                 .andExpect(view().name("index"));
+    }
+
+    @Test
+    public void testIndexStatus() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk());
     }
 }
