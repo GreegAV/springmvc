@@ -27,16 +27,13 @@ public class ProductControllerTest {
 
     @InjectMocks  // setups a controller and inject mock objects into it
     private ProductController productController;
-
     private MockMvc mockMvc;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this); //Initializes controller and mocks
-
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
     }
-
 
     @Test
     public void testList() throws Exception {
@@ -50,8 +47,6 @@ public class ProductControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("product/list"))
                 .andExpect(model().attribute("products", hasSize(2)));
-
-
     }
 
     @Test
@@ -61,6 +56,15 @@ public class ProductControllerTest {
         mockMvc.perform(get("/product/show/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("product/show"))
+                .andExpect(model().attribute("product", instanceOf(Product.class)));
+    }
+
+    @Test
+    public void testEdit() throws Exception {
+        when(productService.getById(1)).thenReturn(new Product());
+        mockMvc.perform(get("/product/edit/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("product/productform"))
                 .andExpect(model().attribute("product", instanceOf(Product.class)));
     }
 
