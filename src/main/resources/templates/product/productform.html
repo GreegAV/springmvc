@@ -11,7 +11,7 @@
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
 
-    <link href="../static/css/spring-core.css"
+    <link href="../../static/css/spring-core.css"
           th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Price:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{price}"  pattern="[0-9]+([.]+[0-9]{0,2})?$" title="xxx.xx"/>
+                    <input type="text" class="form-control" th:field="*{price}" pattern="[0-9]+([.]+[0-9]{0,2})?$" title="xxx.xx"/>
                 </div>
             </div>
             <div class="form-group">
